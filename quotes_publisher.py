@@ -63,5 +63,5 @@ async def sse(request):
     generator = random_stock_data()
     return EventSourceResponse(generator)
 
-def run_server():
+if __name__ == "__main__":
     uvicorn.run(server, port=5000)

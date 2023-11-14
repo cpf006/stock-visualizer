@@ -5,15 +5,13 @@ import dash_bootstrap_components as dbc
 
 def format_dataframe(df):
     """Formats the dataframe for display."""
-    # Custom date parser to handle MM0DD0YY or M0DD0YY formats
-    def parse_date(date_str):
+    # Custom date parser to handle MMDDYYYY or MDDYYYY formats
+    def parse_date(date_int):
         date_str = str(date_int)
-        if len(date_str) == 7:  # M0DD0YY format
-            return pd.to_datetime(date_str, format='%m%d%y')
-        elif len(date_str) == 8:  # MM0DD0YY format
-            return pd.to_datetime(date_str, format='%m%d%Y')
-        else:
-            raise ValueError(f"Unknown date format: {date_str}")
+        if len(date_str) == 7:  # MDDYYYY format
+            date_str = '0' + date_str
+
+        return pd.to_datetime(date_str, format='%m%d%Y')
 
     df['DATE'] = df['DATE'].apply(parse_date).dt.strftime('%Y-%m-%d')
     # Transpose the dataframe for the table
@@ -27,7 +25,7 @@ def create_time_series(df):
     fig = go.Figure()
     for column in df.columns[1:]:  # Skip the first column (DATE)
         fig.add_trace(go.Scatter(x=df['DATE'], y=df[column], mode='lines', name=column))
-    fig.update_layout(title='Historical Stock Data', xaxis_title='Date', yaxis_title='Price')
+    fig.update_layout(xaxis_title='Date', yaxis_title='Price')
     return fig
 
 def get_layout():
