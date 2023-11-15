@@ -1,3 +1,8 @@
+<img width="892" alt="Screenshot 2023-11-14 at 10 13 34 PM" src="https://github.com/cpf006/stock-visualizer/assets/5445886/05f4685c-92df-466c-95bf-edb7235fb766">
+
+<img width="892" alt="Screenshot 2023-11-14 at 10 18 30 PM" src="https://github.com/cpf006/stock-visualizer/assets/5445886/7cd8badd-4dc0-4a45-bfb6-1a4704fe569c">
+
+
 # Stock Visualizer
 Example of a stock data visualization app built using Dash
 
