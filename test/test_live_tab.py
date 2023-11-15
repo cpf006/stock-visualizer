@@ -30,7 +30,7 @@ def test_update_graph():
     """Test the update_graph callback function."""
     existing_figure = None
     n_intervals = 0
-    json_data = json.loads(sample_json_data)  # Parse JSON string to dictionary
+    json_data = json.loads(sample_json_data)
 
     # Simulate the callback with sample data
     with pytest.raises(PreventUpdate):

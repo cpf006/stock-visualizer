@@ -16,11 +16,7 @@ def format_dataframe(df):
 
     # Transpose the dataframe for the table
     df_transposed = df.set_index("DATE").T
-
-    # Reset index to turn the symbols into a regular column
     df_transposed.reset_index(inplace=True)
-
-    # Rename the 'index' column to something more descriptive, like 'Symbol'
     df_transposed.rename(columns={"index": "Date"}, inplace=True)
 
     # Format numbers with dollar signs and two decimal points
@@ -56,7 +52,6 @@ def get_layout():
         data=data,
         columns=columns,
         style_table={"overflowY": "auto", "height": "300px"},
-        # Enable vertical scrolling
         style_header={"backgroundColor": "lightgrey", "fontWeight": "bold"},
         style_cell={
             "textAlign": "left",
