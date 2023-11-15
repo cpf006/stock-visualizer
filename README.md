@@ -21,7 +21,12 @@ Run the Dash app
 python app.py
 ```
 
-### Access URL
+# Running tests
+```
+pytest
+```
+
+# Access URL
 ```
 http://localhost:8000/
 ```
