@@ -30,4 +30,4 @@ app.layout = html.Div([
 live_tab.register_callbacks(app)
 
 if __name__ == "__main__":
-    app.run_server(debug=False, port=8000)
+    app.run_server(host='0.0.0.0', debug=False, port=8000)

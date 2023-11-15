@@ -64,4 +64,4 @@ async def sse(request):
     return EventSourceResponse(generator)
 
 if __name__ == "__main__":
-    uvicorn.run(server, port=5000)
+    uvicorn.run(server, host="0.0.0.0", port=5000)
