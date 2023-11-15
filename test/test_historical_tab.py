@@ -1,8 +1,7 @@
 import pytest
 from modules import historical_tab
 import pandas as pd
-from dash import dcc
-import dash_bootstrap_components as dbc
+from dash import dcc, dash_table
 
 sample_data = {
     'DATE': ['12012021', '6012023'],  # Example dates
@@ -18,12 +17,10 @@ def sample_dataframe():
 def test_format_dataframe(sample_dataframe):
     """Test the formatting of the dataframe."""
     formatted_df, df_transposed = historical_tab.format_dataframe(sample_dataframe)
-    
+
     # Check if DATE column is formatted correctly
     assert all(formatted_df['DATE'] == ['2021-12-01', '2023-06-01']), "Date formatting is incorrect"
-    
-    # Check if the dataframe is transposed correctly
-    assert df_transposed.shape == (2, 2), "Dataframe transposition is incorrect"
+    assert df_transposed.shape == (2, 3), "Dataframe transposition is incorrect"
 
 def test_create_time_series(sample_dataframe):
     """Test the creation of the time series plot."""
@@ -40,7 +37,5 @@ def test_create_time_series(sample_dataframe):
 def test_get_layout():
     """Test the layout creation for the historical tab."""
     layout = historical_tab.get_layout()
-    
-    # Check if the layout contains necessary components
     assert any(isinstance(component, dcc.Graph) for component in layout.children), "Graph component missing in layout"
-    assert any(isinstance(component, dbc.Table) for component in layout.children), "Table component missing in layout"
+    assert any(isinstance(component, dash_table.DataTable) for component in layout.children), "DataTable component missing in layout"

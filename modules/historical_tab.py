@@ -1,8 +1,6 @@
 import pandas as pd
 import plotly.graph_objs as go
-from dash import html, dcc
-import dash_bootstrap_components as dbc
-import dash_table
+from dash import html, dcc, dash_table
 
 def format_dataframe(df):
     """Formats the dataframe for display."""
